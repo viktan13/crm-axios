@@ -42,10 +42,10 @@ const OrdersList = (props) => {
         {
             key: 'dates', label: 'Dates', render: (row) => (
                 <ul className="list-unstyled">
-                    <li>{row.sentToDo.date}</li>
-                    <li>{row.completed.date}</li>
-                    <li>{row.sayToClient.date}</li>
-                    <li>{row.clientReceived.date}</li>
+                    <li style={row.sentToDo.date === '' ? {color: 'transparent'} : {color: "black"}}>{row.sentToDo.date || 'N'}</li>
+                    <li style={row.completed.date === '' ? {color: 'transparent'} : {color: "black"}}>{row.completed.date || 'N'}</li>
+                    <li style={row.sayToClient.date === '' ? {color: 'transparent'} : {color: "black"}}>{row.sayToClient.date || 'N'}</li>
+                    <li style={row.clientReceived.date === '' ? {color: 'transparent'} : {color: "black"}}>{row.clientReceived.date || 'N'}</li>
                     <li>{row.paid.date}</li>
                 </ul>
             )
