@@ -6,7 +6,6 @@ const UpdateOrder = (props) => {
     const {order, updateOrder} = props;
 
     const [newPayment, setNewPayment] = useState(0);
-    const [updStatuses, setUpdStatuses] = useState(order.statuses);
     const [sentToDoChecked, setSentToDoChecked] = useState(order.sentToDo.status);
     const [completedChecked, setCompletedChecked] = useState(order.completed.status);
     const [sayToClientChecked, setSayToClientChecked] = useState(order.sayToClient.status);
