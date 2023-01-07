@@ -13,16 +13,32 @@ const UpdateOrder = (props) => {
     const [clientReceivedChecked, setClientReceivedChecked] = useState(order.clientReceived.status);
 
 
-
     function saveButtonHandler() {
-        const updOrder = {...order,
+        const updOrder = {
+            ...order,
             paid: {
-            ...order.paid,
+                ...order.paid,
                 payment: order.paid.payment + newPayment,
                 debt: order.paid.debt - newPayment,
                 status: order.paid.debt - newPayment <= 0,
-                date: order.paid.status - newPayment <= 0 ? getDate() : ''
+                date: order.paid.debt - newPayment <= 0 && newPayment !== 0 ? getDate() : order.paid.debt - newPayment <= 0 ? order.paid.date : ''
             },
+            sentToDo: {
+                date: !order.sentToDo.status && sentToDoChecked ? getDate() : sentToDoChecked ? order.sentToDo.date : '',
+                status: sentToDoChecked
+            },
+            completed: {
+                date: !order.completed.status && completedChecked ? getDate() : completedChecked ? order.completed.date : '',
+                status: completedChecked
+            },
+            sayToClient: {
+                date: !order.sayToClient.status && sayToClientChecked ? getDate() : sayToClientChecked ? order.sayToClient.date : '',
+                status: sayToClientChecked
+            },
+            clientReceived: {
+                date: !order.clientReceived.status && clientReceivedChecked ? getDate() : clientReceivedChecked ? order.clientReceived.date : '',
+                status: clientReceivedChecked
+            }
         }
         updateOrder(order._id, updOrder)
         setNewPayment(0);
